@@ -52,4 +52,7 @@ console.log(1 + 2 + "2");
 console.log(+true);
 console.log(+"");
 
+let gameCounter = 100;
+gameCounter++
+console.log(gameCounter)
 // node 01_Basics/03_ConversionOperation.js
