@@ -21,4 +21,26 @@ let fun = function () {
 }
 console.table([typeof arr, typeof obj, typeof fun])
 
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Stack (Primitive), Heap (Non - Primitive)
+
+let myYoutubeName = "pardeepdotcom"
+
+let anothername = myYoutubeName
+anothername = "Pardeep404"
+
+console.table([myYoutubeName, anothername])
+
+
+let userOne = {
+    email: "pardeep@gmal.com",
+    upi: "user@ybl"
+}
+
+let userTwo = userOne
+userTwo.email = "pardeep@google.com"
+
+console.table([userOne, userTwo])
+
 // node DataTypes-Summary.js
