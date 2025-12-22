@@ -33,3 +33,31 @@ function calculateTotal(price, tax) {
 console.log(favoriteFruits, typeof favoriteFruits); // object
 console.log(userProfile, typeof userProfile);       // object
 console.log(calculateTotal, typeof calculateTotal); // function
+
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Stack (Primitive) → copy by value (Stack Memory)
+
+let originalUserName = "Pardeep";
+let copiedUserName = originalUserName; // value copy hoti hai
+
+copiedUserName = "Aman";
+
+console.log(originalUserName, typeof originalUserName); // "Pardeep" string
+console.log(copiedUserName, typeof copiedUserName);     // "Aman" string
+
+
+// Heap (Non-Primitive) → copy by reference (Heap Memory)
+
+let originalUserProfile = {
+  name: "Pardeep",
+  age: 26,
+  role: "Frontend Developer"
+};
+
+let referencedUserProfile = originalUserProfile; // same reference
+
+referencedUserProfile.name = "Aman";
+
+console.log(originalUserProfile, typeof originalUserProfile);   // object (changed)
+console.log(referencedUserProfile, typeof referencedUserProfile); // object
