@@ -46,3 +46,28 @@ console.log(
   "Has property 'lastName'? :",
   tinderUser.hasOwnProperty("lastName")
 );
+
+// Object Destructuring Example
+
+const course = {
+  courseName: "MCA",
+  price: "999",
+  courseInstructor: "Aseem Khanna",
+};
+
+// Destructuring
+const { courseInstructor } = course;
+console.log(courseInstructor);
+
+// Renaming during destructuring
+const { courseInstructor: instructor } = course;
+console.log(instructor);
+
+// JSON Example
+/*
+{
+  "name": "Pardeep",
+  "courseName": "MCA",
+  "price": 90000
+}
+*/
