@@ -19,13 +19,17 @@
   // "postCreateCommand": "yarn install",
 
   // Configure tool-specific properties.
+
+  "forwardPorts": [5500],
+
   "customizations": {
     "vscode": {
       "extensions": [
         "formulahendry.code-runner",
         "esbenp.prettier-vscode",
         "vscode-icons-team.vscode-icons",
-        "wayou.vscode-todo-highlight"
+        "wayou.vscode-todo-highlight",
+        "ritwickdey.liveserver"
       ],
       "settings": {
         "editor.wordWrap": "on"
