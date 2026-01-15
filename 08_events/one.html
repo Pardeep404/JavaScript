@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Events</title>
+  </head>
+  <body style="background-color: #414141; color: aliceblue">
+    <h2>Amazing image</h2>
+    <div>
+      <!-- Parent UL used for event delegation -->
+      <ul id="images">
+        <li>
+          <!-- Image with unique id -->
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <!-- Anchor tag to demonstrate preventDefault -->
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+
+  <script>
+    // =========================
+    // BASIC EVENT LISTENER DEMO
+    // =========================
+
+    // document.getElementById("owl").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     // prevent default browser behavior
+    //     e.preventDefault();
+    //     console.log("owl");
+    //     // complete event object
+    //     console.log(e);
+    //     // element that actually triggered the event
+    //     console.log("Target:", e.target);
+    //     // element on which listener is attached
+    //     console.log(e.currentTarget);
+    //     // element mouse moved to (non-standard / deprecated)
+    //     console.log(e.toElement);
+    //     // event type (click)
+    //     console.log(e.type);
+    //     // mouse position relative to viewport
+    //     console.log("Mouse:", e.clientX, e.clientY);
+    //     // mouse position relative to page
+    //     console.log("Page:", e.pageX, e.pageY);
+    //     // whether Alt key was pressed
+    //     console.log("Alt presses:", e.altKey);
+    //     // which mouse button was clicked
+    //     console.log("Button:", e.button);
+    //     // timestamp of the event
+    //     console.log(e.timeStamp);
+    //   },
+    //   false // event bubbling phase
+    // );
+
+    // =========================
+    // EVENT BUBBLING EXAMPLE
+    // =========================
+
+    // document.getElementById("images").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     // triggered when any child inside UL is clicked
+    //     console.log("clicked inside the ul");
+    //   },
+    //   false
+    // );
+
+    // document.getElementById("owl").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     // triggered specifically when owl image is clicked
+    //     console.log("owl clicked");
+    //   },
+    //   false
+    // );
+
+    // =========================
+    // EVENT CAPTURING EXAMPLE
+    // =========================
+
+    // document.getElementById("images").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     console.log("clicked inside the ul");
+    //   },
+    //   true // capturing phase
+    // );
+
+    // document.getElementById("owl").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     console.log("owl clicked");
+    //   },
+    //   true
+    // );
+
+    // =========================
+    // STOP PROPAGATION EXAMPLE
+    // =========================
+
+    // document.getElementById("images").addEventListener("click", function (e) {
+    //   console.log("clicked inside the ul");
+    // });
+
+    // document.getElementById("owl").addEventListener("click", function (e) {
+    //   console.log("owl clicked");
+    //   // stops event from bubbling to parent
+    //   e.stopPropagation();
+    // });
+
+    // =========================
+    // PREVENT DEFAULT ON LINK
+    // =========================
+
+    // document.getElementById("google").addEventListener("click", function (e) {
+    //   // stops navigation to google.com
+    //   e.preventDefault();
+    //   // stops event bubbling
+    //   e.stopPropagation();
+    //   console.log("Google Clicked");
+    // });
+
+    // =========================
+    // EVENT DELEGATION (ACTIVE)
+    // =========================
+
+    document.getElementById("images").addEventListener(
+      "click",
+      function (e) {
+        // prevents default behavior (like link navigation)
+        e.preventDefault();
+
+        // stops event from bubbling further
+        e.stopPropagation();
+
+        // logs which tag was clicked (IMG / A)
+        console.log(e.target.tagName);
+
+        // check if clicked element is IMG or A
+        if (e.target.tagName === "IMG" || e.target.tagName === "A") {
+          // log id of clicked element
+          console.log(e.target.id);
+
+          // select parent <li> of clicked element
+          let removeIt = e.target.parentNode;
+
+          // remove the <li> from DOM
+          removeIt.remove();
+        }
+      },
+      false // bubbling phase
+    );
+  </script>
+</html>
