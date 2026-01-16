@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser API</title>
+  </head>
+  <body>
+    <h1>Stop Watch</h1>
+    <p id="watch"></p>
+    <div>
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+    </div>
+  </body>
+  <script>
+    const watch = document.querySelector("#watch");
+    const start = document.querySelector("#start");
+
+    let currentTime;
+    function showTime() {
+      // console.log(new Date().toLocaleTimeString())
+      currentTime = setInterval(() => {
+        let time = new Date().toLocaleTimeString();
+        watch.innerHTML = time;
+      }, 1000);
+    }
+    function stopTime() {
+      document.querySelector("#stop").addEventListener("click", () => {
+        clearInterval(currentTime);
+      });
+    }
+    showTime();
+    stopTime();
+  </script>
+</html>
