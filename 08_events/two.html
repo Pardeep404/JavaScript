@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -16,21 +16,22 @@
   <script>
     const watch = document.querySelector("#watch");
     const start = document.querySelector("#start");
+    const stop = document.querySelector("#stop");
 
     let currentTime;
+
     function showTime() {
-      // console.log(new Date().toLocaleTimeString())
       currentTime = setInterval(() => {
         let time = new Date().toLocaleTimeString();
         watch.innerHTML = time;
       }, 1000);
     }
+
     function stopTime() {
-      document.querySelector("#stop").addEventListener("click", () => {
-        clearInterval(currentTime);
-      });
+      clearInterval(currentTime);
     }
-    showTime();
-    stopTime();
+
+    start.addEventListener("click", showTime);
+    stop.addEventListener("click", stopTime);
   </script>
 </html>
