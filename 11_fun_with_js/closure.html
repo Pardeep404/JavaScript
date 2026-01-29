@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure</title>
+  </head>
+  <body style="background-color: #131313">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+  </body>
+  <script>
+    function init() {
+      let name = "Pardeep";
+      function displayName() {
+        console.log(name);
+      }
+      displayName();
+    }
+    // init();
+  </script>
+  <script>
+    function handleColor(color) {
+      return function () {
+        document.body.style.backgroundColor = `${color}`;
+      };
+    }
+    document
+      .querySelector("#orange")
+      .addEventListener("click", handleColor("orange"));
+    document
+      .querySelector("#green")
+      .addEventListener("click", handleColor("green"));
+  </script>
+</html>
